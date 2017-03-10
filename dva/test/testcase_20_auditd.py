@@ -37,9 +37,13 @@ class testcase_20_auditd(Testcase):
                     auditd_checksum = 'e1886162554c18906df2ecd258aa4794'
                     auditd_sysconf_checksum = 'd4d43637708e30418c30003e212f76fc'
             else:
+                if version >= '6.9':
+                    auditd_checksum = '612ddf28c3916530d47ef56a1b1ed1ed'
+                    auditd_sysconf_checksum = '123beb3a97a32d96eba4f11509e39da2'
                 # RHEL6.6, ...
-                auditd_checksum = 'e1886162554c18906df2ecd258aa4794'
-                auditd_sysconf_checksum = '0825f77b49a82c5d75bcd347f30407ab'
+                else:
+                    auditd_checksum = 'e1886162554c18906df2ecd258aa4794'
+                    auditd_sysconf_checksum = '0825f77b49a82c5d75bcd347f30407ab'
             self.ping_pong(connection, 'md5sum /etc/sysconfig/auditd  | cut -f 1 -d \' \'', auditd_sysconf_checksum)
         elif version < '8.0':
             # RHEL7.x
