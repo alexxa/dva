@@ -8,7 +8,7 @@ class testcase_67_timezone(Testcase):
     """
     stages = ['stage1']
     tags = ['default']
-    applicable = {'virtualization': 'hvm', 'platform': '(?i)BETA|RHEL', 'version': 'OS (>6.8, >7.2)'}
+    applicable = {'virtualization': 'hvm', 'platform': '(?i)BETA|RHEL', 'version': 'OS (>6.8, !=7.0, !=7.1, !=7.2, !=7.3)'}
 
     # pylint: disable=unused-argument
     def test(self, connection, params):
