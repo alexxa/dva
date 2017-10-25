@@ -306,6 +306,9 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-rhel-server-supplementary: false
         rhui-REGION-rhel-server-releases-debug: false
         rhui-REGION-rhel-server-releases-optional-debug: false
+        rhui-REGION-rhel-server-extras: false
+        rhui-REGION-rhel-server-source-extras: false
+        rhui-REGION-rhel-server-debug-extras: false
 
 
     BETA_7.0: &BETA_7_0
@@ -345,6 +348,9 @@ ANY_REGION: &ANY_REGION
         <<: *RHEL_7_1
 
     RHEL_7.3:
+        <<: *RHEL_7_1
+
+    RHEL_7.4:
         <<: *RHEL_7_1
 
     SAP_6.5:
