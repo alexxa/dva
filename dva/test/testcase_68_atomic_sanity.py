@@ -30,7 +30,7 @@ class testcase_68_atomic_sanity(Testcase):
         subscription_username = params['subscription_username']
         subscription_password = params['subscription_password']
 
-        self.get_return_value(connection, 'subscription-manager register --serverurl=subscription.rhn.redhat.com:443/subscription --baseurl=cdn.redhat.com --username=%s --password=%s --auto-attach --force' % (subscription_username, subscription_password), 360, nolog=True)
+        self.get_return_value(connection, 'subscription-manager register --serverurl=subscription.rhn.redhat.com:443/subscription --username=%s --password=%s --auto-attach --force' % (subscription_username, subscription_password), 360, nolog=True)
         self.get_return_value(connection, 'subscription-manager repos --disable=*', 180)
         self.get_return_value(connection, 'subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-optional-rpms', 180)
         self.get_return_value(connection, 'docker pull rhel7', 180)
