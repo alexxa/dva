@@ -50,7 +50,7 @@ class testcase_20_auditd(Testcase):
             if version <= '7.2':
                 auditd_checksum = 'e1886162554c18906df2ecd258aa4794'
                 auditd_rules_checksum = 'd5985c09d6c150e433362eca9d59e8fe'
-            if version == '7.3':
+            elif version == '7.3':
                 auditd_checksum = '643fcb75e59e330539c91678a2bb6454'
                 auditd_rules_checksum = '6b6d7a773a63a2cef32341993ad66c8c'
             else:
