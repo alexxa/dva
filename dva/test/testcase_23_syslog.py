@@ -19,7 +19,7 @@ class testcase_23_syslog(Testcase):
         if rsyslog_md5:
             if ver.startswith('5.'):
                 rsyslog_md5_check = ['bd4e328df4b59d41979ef7202a05e074', '15936b6fe4e8fadcea87b54de495f975']
-            elif ver[:3] in ['6.0', '6.1', '6.2']:
+            elif ver[:3] in ['6.0', '6.1', '6.2'] and ver != '6.10':
                 rsyslog_md5_check = ['dd356958ca9c4e779f7fac13dde3c1b5']
             elif ver.startswith('6.'):
                 rsyslog_md5_check = ['8b91b32300134e98ef4aee632ed61e21']

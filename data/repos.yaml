@@ -230,6 +230,34 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-rhel-server-source-rh-common: false
         rhui-REGION-rhel-server-rh-common: true
 
+    BETA_6.10:
+        <<: *HAS_RHEL_SOURCE
+        <<: *HAS_RHEL_SOURCE_BETA
+        rhui-REGION-client-config-server-6: true
+        rhui-REGION-client-config-server-6-beta: true
+        rhui-REGION-rhel-server-releases: true
+        rhui-REGION-rhel-server-releases-beta: true
+        rhui-REGION-rhel-server-releases-optional: false
+        rhui-REGION-rhel-server-releases-optional-beta: false
+        rhui-REGION-rhel-server-releases-optional-source: false
+        rhui-REGION-rhel-server-releases-optional-source-beta: false
+        rhui-REGION-rhel-server-releases-source: false
+        rhui-REGION-rhel-server-releases-source-beta: false
+        rhui-REGION-rhel-server-debug-rhscl: false
+        rhui-REGION-rhel-server-debug-supplementary: false
+        rhui-REGION-rhel-server-rhscl: false
+        rhui-REGION-rhel-server-source-rhscl: false
+        rhui-REGION-rhel-server-source-supplementary: false
+        rhui-REGION-rhel-server-supplementary: false
+        rhui-REGION-rhel-server-debug-rh-common: false
+        rhui-REGION-rhel-server-source-rh-common: false
+        rhui-REGION-rhel-server-rh-common: true
+        rhui-REGION-rhel-server-debug-extras: false
+        rhui-REGION-rhel-server-extras: false
+        rhui-REGION-rhel-server-releases-debug: false
+        rhui-REGION-rhel-server-releases-optional-debug: false
+        rhui-REGION-rhel-server-source-extras: false
+
 
     RHEL_6.6:
         <<: *HAS_RHEL_SOURCE
@@ -310,6 +338,29 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-rhel-server-source-extras: false
         rhui-REGION-rhel-server-debug-extras: false
 
+    RHEL_6.10:
+        <<: *HAS_RHEL_SOURCE
+        <<: *HAS_RHEL_SOURCE_BETA
+        rhui-REGION-client-config-server-6: true
+        rhui-REGION-rhel-server-debug-rh-common: false
+        rhui-REGION-rhel-server-debug-rhscl: false
+        rhui-REGION-rhel-server-debug-supplementary: false
+        rhui-REGION-rhel-server-releases: true
+        rhui-REGION-rhel-server-releases-optional: false
+        rhui-REGION-rhel-server-releases-optional-source: false
+        rhui-REGION-rhel-server-releases-source: false
+        rhui-REGION-rhel-server-rh-common: true
+        rhui-REGION-rhel-server-rhscl: false
+        rhui-REGION-rhel-server-source-rh-common: false
+        rhui-REGION-rhel-server-source-rhscl: false
+        rhui-REGION-rhel-server-source-supplementary: false
+        rhui-REGION-rhel-server-supplementary: false
+        rhui-REGION-rhel-server-releases-debug: false
+        rhui-REGION-rhel-server-releases-optional-debug: false
+        rhui-REGION-rhel-server-extras: false
+        rhui-REGION-rhel-server-source-extras: false
+        rhui-REGION-rhel-server-debug-extras: false
+
 
     BETA_7.0: &BETA_7_0
         rhui-REGION-client-config-server-7-beta: true
@@ -318,6 +369,15 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-rhel-server-releases-debug-beta: false
 
     BETA_7.2:
+        << : *BETA_7_0
+
+    BETA_7.3:
+        << : *BETA_7_0
+
+    BETA_7.4:
+        << : *BETA_7_0
+
+    BETA_7.5:
         << : *BETA_7_0
 
     RHEL_7.0: &RHEL_7_1
@@ -351,6 +411,9 @@ ANY_REGION: &ANY_REGION
         <<: *RHEL_7_1
 
     RHEL_7.4:
+        <<: *RHEL_7_1
+
+    RHEL_7.5:
         <<: *RHEL_7_1
 
     SAP_6.5:
@@ -408,6 +471,8 @@ ap-northeast-1:
     <<: *ANY_REGION
 ap-northeast-2:
     <<: *ANY_REGION
+ap-northeast-3:
+    <<: *ANY_REGION
 ap-southeast-1:
     <<: *ANY_REGION
 ap-southeast-2:
@@ -417,6 +482,8 @@ ap-south-1:
 eu-west-1:
     <<: *ANY_REGION
 eu-west-2:
+    <<: *ANY_REGION
+eu-west-3:
     <<: *ANY_REGION
 eu-central-1:
     <<: *ANY_REGION

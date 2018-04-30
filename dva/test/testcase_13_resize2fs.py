@@ -10,7 +10,7 @@ class testcase_13_resize2fs(Testcase):
     """
     stages = ['stage1']
     # applicable = {'platform': '(?i)RHEL|BETA|ATOMIC', 'version': 'OS (>=5.5, >=6.7, >=7.1)'}
-    applicable = {'platform': '(?i)RHEL|BETA|ATOMIC', 'version': 'OS (>=5.5, !=6.0, !=6.1, !=6.2, !=6.3, !=6.4, !=6.5, !=6.6, !=7.0)'}
+    applicable = {'platform': '(?i)RHEL|BETA|ATOMIC', 'version': 'OS (>=5.5, !=6.0, !=6.1, !=6.2, !=6.3, !=6.4, !=6.5, !=6.6, !=6.7, !=7.0)'}
     tags = ['default']
 
     def test(self, connection, params):

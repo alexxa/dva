@@ -53,9 +53,13 @@ class testcase_20_auditd(Testcase):
             elif version == '7.3':
                 auditd_checksum = '643fcb75e59e330539c91678a2bb6454'
                 auditd_rules_checksum = '6b6d7a773a63a2cef32341993ad66c8c'
-            else:
+            elif version == '7.4':
                 auditd_checksum = '643fcb75e59e330539c91678a2bb6454'
                 auditd_rules_checksum = 'f1c2a2ef86e5db325cd2738e4aa7df2c'
+            else:
+                auditd_checksum = '29f4c6cd67a4ba11395a134cf7538dbd'
+                auditd_rules_checksum = 'f1c2a2ef86e5db325cd2738e4aa7df2c'
+            
         self.ping_pong(connection, 'md5sum /etc/audit/auditd.conf | cut -f 1 -d \' \'', auditd_checksum)
         self.ping_pong(connection, 'md5sum /etc/audit/audit.rules | cut -f 1 -d \' \'', auditd_rules_checksum)
         return self.log
