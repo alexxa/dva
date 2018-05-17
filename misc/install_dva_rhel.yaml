@@ -12,41 +12,30 @@
         gpgkey: https://copr-be.cloud.fedoraproject.org/results/pypa/pypa/pubkey.gpg
         enabled: yes
       
-    - name: install package python-setuptools
+    - name: Install required packages
       become: true
-      package: 
-        name: python-setuptools
-        state: latest
-      
-    - name: install package python-devel
+      package: name={{ item }} state=present
+      with_items: 
+        - python-devel
+        - gcc
+        - libffi-devel
+        - openssl-devel
+        - git
+        - python-pip
+
+    - name: Upgrade pip 
       become: true
-      package: 
-        name: python-devel 
-        state: present
-      
-    - name: install package gcc
+      command: pip install --upgrade pip
+
+    - name: Install pip dependencies
       become: true
-      package: 
-        name: gcc
-        state: present
-      
-    - name: install package libffi-devel
-      become: true
-      package: 
-        name: libffi-devel
-        state: present
-      
-    - name: install package openssl-devel
-      become: true
-      package: 
-        name: openssl-devel 
-        state: present
-      
-    - name: install package git
-      become: true
-      package: 
-        name: git
-        state: present
+      command: pip install {{ item }}
+      with_items: 
+        - aaargh
+        - boto
+        - gevent
+        - stitches
+        - setuptools
       
     - name: clone dva
       git:
