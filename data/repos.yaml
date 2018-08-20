@@ -380,6 +380,9 @@ ANY_REGION: &ANY_REGION
     BETA_7.5:
         << : *BETA_7_0
 
+    BETA_7.6:
+        << : *BETA_7_0
+
     RHEL_7.0: &RHEL_7_1
         rhui-REGION-client-config-server-7: true
         rhui-REGION-rhel-server-debug-extras: false
@@ -414,6 +417,9 @@ ANY_REGION: &ANY_REGION
         <<: *RHEL_7_1
 
     RHEL_7.5:
+        <<: *RHEL_7_1
+
+    RHEL_7.6:
         <<: *RHEL_7_1
 
     SAP_6.5:
@@ -500,6 +506,8 @@ us-west-1:
 us-west-2:
     <<: *ANY_REGION
 cn-north-1:
+    <<: *ANY_REGION
+cn-northwest-1:
     <<: *ANY_REGION
 us-gov-west-1:
     <<: *ANY_REGION
