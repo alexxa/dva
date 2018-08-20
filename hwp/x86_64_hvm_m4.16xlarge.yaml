@@ -1,0 +1,10 @@
+- arch: x86_64
+  userdata: &USERDATA |
+      #! /bin/sh -ex
+      yum -y install xdelta
+      touch /userdata_test
+      date >> /userdata_test
+  cpu: '64'
+  cloudhwname: m4.16xlarge
+  memory: '256000000'
+  virtualization: hvm
