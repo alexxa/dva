@@ -1,6 +1,6 @@
 """ This module contains testcase_17_shells test """
 from testcase import Testcase
-
+from distutils.version import LooseVersion
 
 class testcase_17_shells(Testcase):
     """
@@ -12,7 +12,9 @@ class testcase_17_shells(Testcase):
     # pylint: disable=W0613
     def test(self, connection, params):
         """ Perform test """
-
+        version = LooseVersion(params['version'])
+        
         self.get_return_value(connection, 'grep \'bin/bash$\' /etc/shells')
-        self.get_return_value(connection, 'grep \'bin/nologin$\' /etc/shells')
+        if version != '7.6':
+            self.get_return_value(connection, 'grep \'bin/nologin$\' /etc/shells')
         return self.log
