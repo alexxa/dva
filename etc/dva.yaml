@@ -28,4 +28,14 @@ cloud_access:
   subscription_manager:
     subscription_username: user@example.com
     subscription_password: AAAAAAAAAAAAA
+  subnet:
+    us-east-1: [subnet_id]
+    us-west-1: [subnet_id]
+    us-west-2: [subnet_id]
+    ap-southeast-1: [subnet_id]
+    ap-southeast-2: [subnet_id] 
+    ap-northeast-1: [subnet_id]
+    eu-central-1: [subnet_id]
+    eu-west-1: [subnet_id]
+    sa-east-1: [subnet_id]
 global_setup_script: /tmp/setup_script.sh
