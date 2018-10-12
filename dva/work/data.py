@@ -103,9 +103,9 @@ def record_cloud_config(record, config_file=None):
             'keyfile': ssh_config[1]
         }
         # vpc configuration propagation
-        if 'subnet' in cloud_config:
-            if region in cloud_config['subnet']:
-                subnet_id = cloud_config['subnet'][region]
+        if 'subnet' in global_config['cloud_access']:
+            if region in global_config['cloud_access']['subnet']:
+                subnet_id = global_config['cloud_access']['subnet'][region]
                 if type(subnet_id) is list:
                     # more than one subnet provided --- random pick one
                     subnet_id = random.choice(subnet_id)

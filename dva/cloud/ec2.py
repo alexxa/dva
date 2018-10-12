@@ -88,7 +88,6 @@ class EC2(AbstractCloud):
                 block_device_map=bmap,
                 subnet_id=params.get('subnet_id'),
                 user_data=params.get('userdata'),
-                security_groups=params.get('security_groups'),
             )
             myinstance = reservation.instances[0]
             count = 0
