@@ -1,0 +1,5 @@
+- arch: x86_64
+  cpu: '4'
+  cloudhwname: t2.xlarge
+  memory: '16000000'
+  virtualization: hvm

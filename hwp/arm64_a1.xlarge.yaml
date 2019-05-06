@@ -1,0 +1,5 @@
+- arch: arm64
+  cpu: '4'
+  cloudhwname: a1.xlarge
+  memory: '8000000'
+  virtualization: hvm

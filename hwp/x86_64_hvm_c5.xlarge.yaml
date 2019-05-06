@@ -1,0 +1,5 @@
+- arch: x86_64
+  cpu: '4'
+  cloudhwname: c5.xlarge
+  memory: '8000000'
+  virtualization: hvm
