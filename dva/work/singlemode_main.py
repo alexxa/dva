@@ -18,7 +18,7 @@ class ProgressInfo(object):
     def __init__(self, params):
         self.total = 0
         self.processed = 0
-        from gevent.coros import RLock
+        from gevent.lock import RLock
         self.lock = RLock()
         for item in params:
             for test_stage in item['test_stages']:

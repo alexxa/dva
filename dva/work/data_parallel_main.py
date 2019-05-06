@@ -2,7 +2,7 @@
 basic data-parallel main function module
 '''
 
-from gevent.coros import RLock
+from gevent.lock import RLock
 from gevent.pool import Pool
 
 import logging

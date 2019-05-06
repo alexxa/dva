@@ -13,7 +13,7 @@ from ..work.data import load_yaml, save_result
 from ..work.common import RESULT_PASSED
 from result import get_hwp_result
 from gevent.pool import Pool
-from gevent.coros import RLock
+from gevent.lock import RLock
 import yaml
 try:
     from yaml import CDumper as Dumper
