@@ -15,7 +15,7 @@ class testcase_15_rhel_version(Testcase):
         """ Perform test """
 
         prod = params['platform'].upper()
-        if prod in ['RHEL', 'BETA'] and params['version'].startswith('7.'):
+        if prod in ['RHEL', 'BETA'] and (params['version'].startswith('7.') or params['version'].startswith('8.')):
             rhelv = self.match(connection, 'rpm -q --qf \'%{VERSION}\n\' --whatprovides redhat-release',
                                re.compile(r'.*\r\n([0-9]\.[0-9]+)\r\n.*', re.DOTALL))
         else:

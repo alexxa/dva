@@ -13,10 +13,18 @@ class testcase_33_userdata(Testcase):
 
     def test(self, connection, params):
         """ Perform test """
+        
+        prod = params['platform'].upper()
 
         if params['userdata']:
             if self.get_result(connection, 'rpm -q --queryformat \'%{NAME}\n\' cloud-init', 5) == 'cloud-init':
                 userdata_tested = False
+                if params['userdata'].find('yum -y update') != -1:
+                    userdata_tested = True
+                    if prod == "BETA":
+                        self.get_return_value(connection, 'rpm -q rh-amazon-rhui-client-beta')
+                    else:
+                        self.get_return_value(connection, 'rpm -q rh-amazon-rhui-client')
                 if params['userdata'].find('touch /userdata_test') != -1:
                     userdata_tested = True
                     self.get_return_value(connection, 'ls -l /userdata_test')

@@ -11,6 +11,7 @@ class testcase_41_rh_amazon_rhui_client(Testcase):
     tags = ['default']
     stages = ['stage1']
     applicable = {'cloud': '(?i)EC2', 'platform': '(?i)RHEL|BETA'}
+    #applicable = {'cloud': '(?i)EC2', 'platform': '(?i)RHEL|BETA', 'version': 'OS (!=8.0)'}
     not_applicable = {'product': '(?i)ATOMIC'}
 
     def test(self, connection, params):
@@ -25,6 +26,9 @@ class testcase_41_rh_amazon_rhui_client(Testcase):
         if platform == 'BETA':
             #it's ok for BETA to have two clients installed
             rpm_count = 2
+            # RHEL 8 Beta has only one client
+            if version >= '8.0':
+                rpm_count = 1
         # what config rpm to assert
         # watch out for prefixes: rh-amazon-rhui-client.*
         # would match any client package name

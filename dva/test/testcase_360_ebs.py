@@ -23,6 +23,8 @@ class testcase_360_ebs(Testcase):
 
         prod = params['platform'].upper()
         ver = params['version'].upper()
+        hw = params['cloudhwname']
+
         device = '/dev/sdk'
         device_modified = True
         while device_modified:
@@ -52,6 +54,7 @@ class testcase_360_ebs(Testcase):
         while volume.volume_state() == 'creating':
             time.sleep(1)
             wait += 1
+            self.logger.debug('wait: %s --- volume state: %s' % (wait, volume.volume_state()))
             if wait > 300:
                 self.log.append({'result': RESULT_FAILED,
                                  'comment': 'Failed to create EBS volume %s (timeout 300)' % volume.id
@@ -90,6 +93,10 @@ class testcase_360_ebs(Testcase):
             elif (prod in ['RHEL', 'BETA']) and ver in ['6.1', '6.2', '6.3', '6.4'] and (params['virtualization'] != 'hvm'):
                 # 4 letter shift
                 name = device.replace("/dev/sd", "/dev/xvd")[:-1] + chr(ord(device.replace("/dev/sd", "/dev/xvd")[-1:]) + 4)
+            elif hw == "m5.xlarge":
+                name = '/dev/nvme1n1'
+            elif hw == "a1.xlarge":
+                name = '/dev/nvme1n1'
             else:
                 name = device.replace("/dev/sd", "/dev/xvd")
             # waiting for this volume

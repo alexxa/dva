@@ -28,6 +28,18 @@ RHEL_7ANY: &RHEL_7ANY
 BETA_7ANY: &BETA_7ANY
     <<: *RHEL_7ANY
 
+RHEL_8ANY: &RHEL_8ANY
+    /: true
+    /etc/pam.d/fingerprint-auth: true
+    /etc/pam.d/password-auth: true
+    /etc/pam.d/postlogin: true
+    /etc/pam.d/smartcard-auth: true
+    /etc/pam.d/system-auth: true
+    /etc/ssh/sshd_config: true
+
+BETA_8ANY: &BETA_8ANY
+    <<: *RHEL_8ANY
+
 RHEL_5.5:
     <<: *RHEL_5ANY
 

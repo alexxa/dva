@@ -107,3 +107,7 @@ BETA_7.0:
 RHEL_7.0:
     <<: *RHEL_7ANY
     /etc/sysconfig/rh-cloud-firstboot: [etc_runtime_t, etc_t]
+    
+RHEL_8ANY: &RHEL_8ANY
+    /var/lib/misc/postfix.aliasesdb-stamp: [init_var_lib_t, var_lib_t]
+    /userdata_test: [root_t, etc_runtime_t]

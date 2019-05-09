@@ -10,7 +10,7 @@ class testcase_20_auditd(Testcase):
     - config files shoud have specified checksums
     """
     stages = ['stage1']
-    applicable = {'platform': '(?i)RHEL|BETA', 'version': r'5\..*|6\..*|7\..*'}
+    applicable = {'platform': '(?i)RHEL|BETA', 'version': r'5\..*|6\..*|7\..*|8\..*'}
     tags = ['default']
     not_applicable = {'product': '(?i)ATOMIC'}
 
@@ -59,6 +59,10 @@ class testcase_20_auditd(Testcase):
             else:
                 auditd_checksum = '29f4c6cd67a4ba11395a134cf7538dbd'
                 auditd_rules_checksum = 'f1c2a2ef86e5db325cd2738e4aa7df2c'
+        elif version < '9.0':
+            # RHEL8.x
+            auditd_checksum = '7bfa16d314ddb8b96a61a7f617b8cca0'
+            auditd_rules_checksum = '795528bd4c7b4131455c15d5d49991bb'
             
         self.ping_pong(connection, 'md5sum /etc/audit/auditd.conf | cut -f 1 -d \' \'', auditd_checksum)
         self.ping_pong(connection, 'md5sum /etc/audit/audit.rules | cut -f 1 -d \' \'', auditd_rules_checksum)

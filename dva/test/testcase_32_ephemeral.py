@@ -11,7 +11,7 @@ class testcase_32_ephemeral(Testcase):
     stages = ['stage1']
     tags = ['default']
     after = ['testcase_21_disk_size_format']
-    not_applicable = {'cloudhwname': 'm4.xlarge'}
+    not_applicable = {'cloudhwname': 'm4.xlarge|m5.xlarge'}
 
     def test(self, connection, params):
         """ Perform test """

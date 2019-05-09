@@ -15,6 +15,6 @@ class testcase_17_shells(Testcase):
         version = LooseVersion(params['version'])
         
         self.get_return_value(connection, 'grep \'bin/bash$\' /etc/shells')
-        if version != '7.6':
+        if version < '7.6':
             self.get_return_value(connection, 'grep \'bin/nologin$\' /etc/shells')
         return self.log

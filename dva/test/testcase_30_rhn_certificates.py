@@ -23,6 +23,8 @@ def _expiration_date(params):
         return datetime(2010 + expiration, 11, 10)
     if version < '8.0':
         return datetime(2014 + expiration, 6, 10)
+    if version < '9.0':
+        return datetime(2018 + expiration, 11, 4)
     raise ValueError('release %s unsupported' % params['version'])
 
 
@@ -38,7 +40,10 @@ class testcase_30_rhn_certificates(Testcase):
         """ Perform test """
 
         if params['platform'].upper() == 'BETA':
-            config_rpms = 'rh-amazon-rhui-client rh-amazon-rhui-client-beta'
+            if params['version'] == '8.0':
+                config_rpms = 'rh-amazon-rhui-client-beta'
+            else:
+                config_rpms = 'rh-amazon-rhui-client rh-amazon-rhui-client-beta'
         else:
             config_rpms = 'rh-amazon-rhui-client'
         cert_files = [cert_file for cert_file in self.get_result(connection, "rpm -ql " + config_rpms).split() \

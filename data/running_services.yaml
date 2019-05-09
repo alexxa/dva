@@ -24,6 +24,16 @@ RHEL_7ANY: &RHEL_7ANY
     postfix: true
     tuned: true
 
+RHEL_8ANY: &RHEL_8ANY
+    auditd: true
+    rsyslog: true
+    crond: true
+    chronyd: true
+    tuned: true
+
+BETA_8ANY: &BETA_8ANY
+    <<: *RHEL_8ANY
+
 BETA_7ANY: &BETA_7ANY
     <<: *RHEL_7ANY
 
@@ -127,6 +137,12 @@ BETA_7.0:
 
 RHEL_7.0:
     <<: *RHEL_7ANY
+    
+BETA_8.0:
+    <<: *RHEL_8ANY
+
+RHEL_8.0:
+    <<: *RHEL_8ANY
 
 FEDORA_20:
     auditd: true

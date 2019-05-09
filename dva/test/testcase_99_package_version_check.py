@@ -27,6 +27,7 @@ class testcase_99_package_version_check(Testcase):
     """
     stages = ['stage0']
     tags = ['default']
+    applicable = {'version': 'OS (!=8.0)'}
 
     # pylint: disable=W0613
     def test(self, connection, params):
