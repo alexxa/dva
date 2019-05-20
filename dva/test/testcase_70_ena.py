@@ -3,7 +3,7 @@ from testcase import Testcase
 
 class testcase_70_ena(Testcase):
     """
-    Check that the default timezone is set to UTC
+    Check that the network driver is ena
     """
     stages = ['stage1']
     tags = ['default']
