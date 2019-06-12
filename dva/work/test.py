@@ -150,8 +150,9 @@ def execute_stages(params, pool_size=TEST_WORKER_POOL_SIZE, sorted_mode=False):
             continue # avoid rebooting on empty stages
         for result in execute_tests(params, stage_name, pool_size=pool_size, sorted_mode=sorted_mode):
             yield result
-        reboot_instance(params)
-        wait_boot_instance(params)
+        if params['hostname'] is None:
+            reboot_instance(params)
+            wait_boot_instance(params)
     # no reboot at last stage exit
     for result in execute_tests(params, stages[-1]):
         yield result
