@@ -412,6 +412,15 @@ ANY_REGION: &ANY_REGION
     BETA_7.7:
         << : *BETA_7_6
 
+    BETA_7.8:
+        << : *BETA_7_6
+
+    BETA_7.9:
+        << : *BETA_7_6
+
+    BETA_7.10:
+        << : *BETA_7_6
+
     BETA_8.0: &BETA_8_0
         rhui-REGION-client-config-server-8-beta: true
         rhui-REGION-rhel-server-releases-beta: true
@@ -460,8 +469,30 @@ ANY_REGION: &ANY_REGION
     RHEL_7.7:
         <<: *RHEL_7_1
 
+    RHEL_7.8:
+        <<: *RHEL_7_1
+
+    RHEL_7.9:
+        <<: *RHEL_7_1
+
+    RHEL_7.10:
+        <<: *RHEL_7_1
+
     RHEL_8.0: &RHEL_8_0
         rhui-REGION-client-config-server-8: true
+        rhui-client-config-server-8: true
+        rhui-rhel-8-appstream-rhui-debug-rpms: false
+        rhui-rhel-8-appstream-rhui-rpms: true
+        rhui-rhel-8-appstream-rhui-source-rpms: false
+        rhui-rhel-8-baseos-rhui-debug-rpms: false
+        rhui-rhel-8-baseos-rhui-rpms: true
+        rhui-rhel-8-baseos-rhui-source-rpms: false
+        rhui-rhel-8-supplementary-debug-rhui-rpms: false
+        rhui-rhel-8-supplementary-rhui-rpms: false
+        rhui-rhel-8-supplementary-source-rhui-rpms: false
+
+    RHEL_8.1:
+        <<: *RHEL_8_0
 
     SAP_6.5:
         <<: *HAS_RHEL_SOURCE
