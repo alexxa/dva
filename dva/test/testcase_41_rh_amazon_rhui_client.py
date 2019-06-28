@@ -22,17 +22,14 @@ class testcase_41_rh_amazon_rhui_client(Testcase):
         version = LooseVersion(params['version'])
 
         rpm_expr = None
+        #it's ok for BETA to have two clients installed in rhui2
+        #from rhui3, only one client will be installed in all rhel6,7,8
+        #RCMWORK-20136
         rpm_count = 1
-        if platform == 'BETA':
-            #it's ok for BETA to have two clients installed
-            rpm_count = 2
-            # RHEL 8 Beta has only one client
-            if version >= '8.0':
-                rpm_count = 1
         # what config rpm to assert
         # watch out for prefixes: rh-amazon-rhui-client.*
         # would match any client package name
-        if platform == 'RHEL':
+        if platform == 'RHEL' or platform == 'BETA':
             if product == 'CLOUD':
                 rpm_expr =  re.compile('rh-amazon-rhui-client-\d.*')
             elif product == "RHS":
@@ -48,9 +45,6 @@ class testcase_41_rh_amazon_rhui_client(Testcase):
             elif product == 'SAP':
                 rpm_expr = re.compile('rh-amazon-rhui-client-sap-hana-\d.*')
                 rpm_count = 2 # exception
-        elif platform == 'BETA':
-            if product == 'CLOUD':
-                rpm_expr = re.compile('rh-amazon-rhui-client-beta-\d.*')
 
         assert rpm_expr, 'spec for rhui config rpm missing: %s/%s/%s' % \
             (platform, product, version)
