@@ -589,3 +589,5 @@ us-gov-west-1:
     <<: *ANY_REGION
 us-gov-east-1:
     <<: *ANY_REGION
+me-south-1:
+    <<: *ANY_REGION
