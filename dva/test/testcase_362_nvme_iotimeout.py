@@ -10,6 +10,7 @@ class testcase_362_nvme_iotimeout(Testcase):
     """
     stages = ['stage1']
     tags = ['default']
+    applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge'}
 
     # pylint: disable=W0613
     def test(self, connection, params):
