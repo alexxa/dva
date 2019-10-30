@@ -1,6 +1,10 @@
 """ This module contains testcase_02_selinux_context test """
 import re
 import yaml
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
 import os
 import tempfile
 from testcase import Testcase
@@ -50,7 +54,7 @@ class testcase_02_selinux_context(Testcase):
         #figure out if there are new/lost entries or the restorecon output matched the list of allowed exclusions
         with open(self.datadir + '/selinux_context.yaml') as selinux_context:
             # by default, no SELinux issues are expected for untracked platform/version combinations
-            context_exclusions = defaultdict(lambda: {}, yaml.load(selinux_context))['%s_%s' % (prod, ver)]
+            context_exclusions = defaultdict(lambda: {}, yaml.load(selinux_context, Loader=Loader))['%s_%s' % (prod, ver)]
 
         lost_entries = []
         for filename in context_exclusions:
