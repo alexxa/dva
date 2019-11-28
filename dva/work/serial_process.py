@@ -17,11 +17,16 @@ def process(params, pool_size=TEST_WORKER_POOL_SIZE, sorted_mode=False):
     '''process required acctions'''
     terminate = False
     try:
-        params = assert_image(params)
-        yield params
-        params = create_instance(params)
-        terminate = True
-        yield params
+        try:
+            if params['hostname'] is not None:
+                pass
+        except KeyError:
+            params = assert_image(params)
+            yield params
+            params = create_instance(params)
+            terminate = True
+            yield params
+
         params = attempt_ssh(params)
         yield params
         params = allow_root_login(params)
@@ -50,6 +55,11 @@ def required_actions_count(params):
     total = 0
     for item in params:
         total += len(STAGES)
+        try:
+            if item['hostname'] is not None:
+                total -= 3
+        except KeyError:
+            pass
         for test_stage in item['test_stages']:
             for test_name in item['test_stages'][test_stage]:
                 total += 1

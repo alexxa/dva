@@ -15,7 +15,7 @@ def logged(logger=logger, level=logging.DEBUG):
                 # performance reasons
                 # not indent logged, decorator_wrapper, wraps & wrapper
                 indent = len(extract_stack()) - 4
-                assert indent > 0, 'oOops'
+                assert indent == 0, 'oOops'
                 call_str = '-> %s(*%s, **%s)' % (fn.__name__, args, kvs) 
                 for log_line in wrap(call_str, initial_indent=' ' * indent,
                                         subsequent_indent=' ' * indent):

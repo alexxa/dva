@@ -166,6 +166,26 @@ RHEL_7.0:
     /var/run/wpa_supplicant: true
     <<: *RHEL_7ANY
 
+RHEL_7.6:
+    /var/run/wpa_supplicant: true
+    <<: *RHEL_7ANY
+
+RHEL_7.7:
+    /var/run/wpa_supplicant: true
+    <<: *RHEL_7ANY
+
+RHEL_7.8:
+    /var/run/wpa_supplicant: true
+    <<: *RHEL_7ANY
+
+RHEL_7.9:
+    /var/run/wpa_supplicant: true
+    <<: *RHEL_7ANY
+
+RHEL_7.10:
+    /var/run/wpa_supplicant: true
+    <<: *RHEL_7ANY
+
 FEDORA_20:
     /etc/ssh/sshd_config: true
     /var/cache/yum: true

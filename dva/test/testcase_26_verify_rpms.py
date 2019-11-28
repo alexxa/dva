@@ -10,7 +10,7 @@ class testcase_26_verify_rpms(Testcase):
     """
     stages = ['stage1']
     tags = ['default']
-    applicable = {'version': 'OS (!=8.0)'}
+    applicable = {'version': 'OS (!=8.0,!=8.1)'}
 
     def test(self, connection, params):
         """ Perform test """

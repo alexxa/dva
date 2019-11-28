@@ -33,7 +33,7 @@ class testcase_68_atomic_sanity(Testcase):
         self.get_return_value(connection, 'subscription-manager register --serverurl=subscription.rhn.redhat.com:443/subscription --username=%s --password=%s --auto-attach --force' % (subscription_username, subscription_password), 360, nolog=True)
         self.get_return_value(connection, 'subscription-manager repos --disable=*', 180)
         self.get_return_value(connection, 'subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-optional-rpms', 180)
-        self.get_return_value(connection, 'docker pull rhel7', 180)
+        self.get_return_value(connection, 'docker pull rhel7', 3600)
         self.get_result(connection, 'printf "FROM rhel7\nRUN yum -y install --disablerepo=* --enablerepo=rhel-7-server-rpms traceroute;yum clean all\nCMD [\\"traceroute\\",\\"google.com\\"]\n" > Dockerfile; echo ')
         self.get_return_value(connection, 'docker build --rm --no-cache --force-rm -t traceroute .', 360)
         self.get_return_value(connection, 'docker run --rm traceroute', 360)
