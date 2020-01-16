@@ -33,6 +33,7 @@ class testcase_60_yum_update(Testcase):
         elif prod == 'FEDORA' and params['arch'] == 'i386':
             self.get_return_value(connection, 'yum -y install kernel-PAE', 900)
         else:
+            self.get_result(connection, 'yum info kernel-debug', timeout=60)
             self.get_return_value(connection, 'yum -y install kernel', 900)
         self.get_return_value(connection, 'yum -y update', 1800)
         if (prod in ['RHEL', 'BETA'] and ver.startswith('5.')) or prod == 'FEDORA':

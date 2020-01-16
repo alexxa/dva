@@ -38,6 +38,7 @@ class testcase_63_sriov(Testcase):
         'version': 'OS (>=6.6, !=7.0, !=7.1)',
         'cloud': 'ec2',
     }
+    not_applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge'}
 
     # pylint: disable=unused-argument
     def test(self, connection, params):

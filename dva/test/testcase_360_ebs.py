@@ -53,8 +53,10 @@ class testcase_360_ebs(Testcase):
         wait = 0
         while volume.volume_state() == 'creating':
             time.sleep(1)
+            volume.update()
             wait += 1
-            self.logger.debug('wait: %s --- volume state: %s' % (wait, volume.volume_state()))
+            self.logger.debug('wait: %s --- volume id: %s volume state: %s placement: %s' % (wait,
+                volume.id, volume.volume_state(),params['instance']['_placement']))
             if wait > 300:
                 self.log.append({'result': RESULT_FAILED,
                                  'comment': 'Failed to create EBS volume %s (timeout 300)' % volume.id

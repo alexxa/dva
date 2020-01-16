@@ -9,7 +9,8 @@ class testcase_101_chrony_aws(Testcase):
     """
     stages = ['stage1']
     tags = ['default']
-    applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge'}
+    applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge', "version": "OS (>=7.7)"}
+    not_applicable = {'product': '(?i)ATOMIC'}
 
     # pylint: disable=W0613
     def test(self, connection, params):

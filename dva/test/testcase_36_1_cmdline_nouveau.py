@@ -8,6 +8,7 @@ class testcase_36_1_cmdline_nouveau(Testcase):
     """
     stages = ['stage1']
     applicable = {'virtualization': 'hvm'}
+    not_applicable = {'product': '(?i)ATOMIC'}
     tags = ['default']
 
     # pylint: disable=W0613
