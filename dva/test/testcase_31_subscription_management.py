@@ -8,7 +8,7 @@ class testcase_31_subscription_management(Testcase):
     """
     stages = ['stage1']
     #applicable = {'platform': '(?i)RHEL|BETA', 'version': 'OS (> 5.5)'}
-    applicable = {'platform': '(?i)RHEL|BETA', 'version': 'OS (> 5.5, !=8.0, !=8.1)'}
+    applicable = {'platform': '(?i)RHEL|BETA', 'version': 'OS (> 5.5, < 8.0)'}
     not_applicable = {'product': '(?i)ATOMIC'}
     after = ['testcase_27_yum_repos']
     tags = ['default', 'content']

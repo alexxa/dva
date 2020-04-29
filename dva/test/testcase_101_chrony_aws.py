@@ -9,7 +9,7 @@ class testcase_101_chrony_aws(Testcase):
     """
     stages = ['stage1']
     tags = ['default']
-    applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge', "version": "OS (>=7.7)"}
+    applicable = {'cloudhwname': 't3.large|m5.large|m5.xlarge|a1.xlarge', "version": "OS (>=7.7)"}
     not_applicable = {'product': '(?i)ATOMIC'}
 
     # pylint: disable=W0613
