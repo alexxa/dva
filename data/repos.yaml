@@ -427,6 +427,12 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-rhel-server-releases-source-beta: false
         rhui-REGION-rhel-server-releases-debug-beta: false
 
+    BETA_8.1: &BETA_8_1
+        << : *BETA_8_0
+
+    BETA_8.2: &BETA_8_2
+        << : *BETA_8_1
+
     RHEL_7.0: &RHEL_7_1
         rhui-REGION-client-config-server-7: true
         rhui-REGION-rhel-server-debug-extras: false
@@ -509,8 +515,11 @@ ANY_REGION: &ANY_REGION
         rhui-rhel-8-supplementary-rhui-rpms: false
         rhui-rhel-8-supplementary-source-rhui-rpms: false
 
-    RHEL_8.1:
+    RHEL_8.1: &RHEL_8_1
         <<: *RHEL_8_0
+
+    RHEL_8.2: &RHEL_8_2
+        << *RHEL_8_1
 
     SAP_6.5:
         <<: *HAS_RHEL_SOURCE
@@ -561,6 +570,49 @@ ANY_REGION: &ANY_REGION
         rhui-REGION-scalablefilesystem-for-rhui-server-debug: false
         rhui-REGION-scalablefilesystem-for-rhui-server-rpms: true
         rhui-REGION-scalablefilesystem-for-rhui-server-source: false
+
+    SAP_8.1: &SAP_8_1
+        <<: *HAS_RHEL_SOURCE
+        <<: *HAS_RHEL_SOURCE_BETA
+        rhui-REGION-client-config-server-6: true
+        rhui-REGION-client-config-server-6-sap-hana: true
+        rhui-REGION-rhel-server-debug-rh-common: false
+        rhui-REGION-rhel-server-debug-rhscl: false
+        rhui-REGION-rhel-server-debug-supplementary: false
+        rhui-REGION-rhel-server-releases: true
+        rhui-REGION-rhel-server-releases-optional: false
+        rhui-REGION-rhel-server-releases-optional-source: false
+        rhui-REGION-rhel-server-releases-source: false
+        rhui-REGION-rhel-server-rh-common: true
+        rhui-REGION-rhel-server-rhscl: false
+        rhui-REGION-rhel-server-source-rh-common: false
+        rhui-REGION-rhel-server-source-rhscl: false
+        rhui-REGION-rhel-server-source-supplementary: false
+        rhui-REGION-rhel-server-supplementary: false
+        rhui-REGION-sap-hana-for-rhui-server-debug: false
+        rhui-REGION-sap-hana-for-rhui-server-rpms: true
+        rhui-REGION-sap-hana-for-rhui-server-source: false
+        rhui-REGION-scalablefilesystem-for-rhui-server-debug: false
+        rhui-REGION-scalablefilesystem-for-rhui-server-rpms: true
+        rhui-REGION-scalablefilesystem-for-rhui-server-source: false
+        rhel-8-for-x86_64-appstream-rhui-e4s-rpms: true
+        rhel-8-for-x86_64-appstream-rhui-e4s-debug-rpms: false
+        rhel-8-for-x86_64-appstream-rhui-e4s-source-rpms: false
+        rhel-8-for-x86_64-BaseOS-rhui-e4s-rpms: true
+        rhel-8-for-x86_64-BaseOS-rhui-e4s-debug-rpms: false
+        rhel-8-for-x86_64-BaseOS-rhui-e4s-source-rpms: false
+        rhel-8-for-x86_64-highavailability-e4s-rhui-rpms: true
+        rhel-8-for-x86_64-highavailability-e4s-rhui-debug-rpms: false
+        rhel-8-for-x86_64-highavailability-e4s-rhui-source-rpms: false
+        rhel-8-for-x86_64-sap-netweaver-e4s-rpms: true
+        rhel-8-for-x86_64-sap-netweaver-e4s-debug-rpms: false
+        rhel-8-for-x86_64-sap-netweaver-e4s-source-rpms: false
+        rhel-8-for-x86_64-sap-solutions-e4s-rhui-rpms: true
+        rhel-8-for-x86_64-sap-solutions-e4s-rhui-debug-rpms: false
+        rhel-8-for-x86_64-sap-solutions-e4s-rhui-source-rpms: false
+
+    SAP_8.2:
+        <<: *SAP_8.1
 
 # particular regions follow
 ap-northeast-1:
