@@ -18,11 +18,19 @@ class testcase_16_selinux(Testcase):
         version = LooseVersion(params['version'])
 
         if product == 'SAP':
-            raise SkipException('Not applicable to: %s/%s' % (product, version))
+            if version >= '8.0':
+                self.ping_pong(connection, 'getenforce', '\r\nPermissive\r\n')
+                self.get_return_value(connection, 'grep \'^SELINUX=permissive\' /etc/sysconfig/selinux')
+                self.get_return_value(connection, 'grep \'^SELINUXTYPE=targeted\' /etc/sysconfig/selinux')
+                self.ping_pong(connection, 'setenforce Enforcing && getenforce', '\r\nEnforcing\r\n')
+                self.ping_pong(connection, 'setenforce Permissive && getenforce', '\r\nPermissive\r\n')
+            else:
+                raise SkipException('Not applicable to: %s/%s' % (product, version))
+         else:
+            self.ping_pong(connection, 'getenforce', '\r\nEnforcing\r\n')
+            self.get_return_value(connection, 'grep \'^SELINUX=enforcing\' /etc/sysconfig/selinux')
+            self.get_return_value(connection, 'grep \'^SELINUXTYPE=targeted\' /etc/sysconfig/selinux')
+            self.ping_pong(connection, 'setenforce Permissive && getenforce', '\r\nPermissive\r\n')
+            self.ping_pong(connection, 'setenforce Enforcing && getenforce', '\r\nEnforcing\r\n')
 
-        self.ping_pong(connection, 'getenforce', '\r\nEnforcing\r\n')
-        self.get_return_value(connection, 'grep \'^SELINUX=enforcing\' /etc/sysconfig/selinux')
-        self.get_return_value(connection, 'grep \'^SELINUXTYPE=targeted\' /etc/sysconfig/selinux')
-        self.ping_pong(connection, 'setenforce Permissive && getenforce', '\r\nPermissive\r\n')
-        self.ping_pong(connection, 'setenforce Enforcing && getenforce', '\r\nEnforcing\r\n')
         return self.log
