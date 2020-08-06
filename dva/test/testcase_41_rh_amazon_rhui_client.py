@@ -43,8 +43,14 @@ class testcase_41_rh_amazon_rhui_client(Testcase):
             elif product == "GRID":
                 rpm_expr = re.compile('rh-amazon-rhui-client-mrg-\d.*')
             elif product == 'SAP':
-                rpm_expr = re.compile('rh-amazon-rhui-client-sap-hana-\d.*')
-                rpm_count = 2 # exception
+                # new client name and count for SAP
+                if version < '8.0':
+                    rpm_expr = re.compile('rh-amazon-rhui-client-sap-hana-\d.*')
+                    rpm_count = 2 # exception
+                else:
+                    rpm_expr = re.compile('rh-amazon-rhui-client-sap-bundle-e4s-\d.*')
+                    rpm_count = 1 # exception
+
 
         assert rpm_expr, 'spec for rhui config rpm missing: %s/%s/%s' % \
             (platform, product, version)
