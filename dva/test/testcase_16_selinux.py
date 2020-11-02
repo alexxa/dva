@@ -26,7 +26,7 @@ class testcase_16_selinux(Testcase):
                 self.ping_pong(connection, 'setenforce Permissive && getenforce', '\r\nPermissive\r\n')
             else:
                 raise SkipException('Not applicable to: %s/%s' % (product, version))
-         else:
+        else:
             self.ping_pong(connection, 'getenforce', '\r\nEnforcing\r\n')
             self.get_return_value(connection, 'grep \'^SELINUX=enforcing\' /etc/sysconfig/selinux')
             self.get_return_value(connection, 'grep \'^SELINUXTYPE=targeted\' /etc/sysconfig/selinux')
